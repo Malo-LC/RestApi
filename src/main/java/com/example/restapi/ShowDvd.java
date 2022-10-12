@@ -13,6 +13,10 @@ public class ShowDvd extends HttpServlet{
             "Fincher and starring Brad Pitt, Edward Norton, and Helena Bonham Carter. It is based on the 1996 novel of the same name by Chuck Palahniuk." +
             " Norton plays the unnamed narrator, who is discontented with his white-collar job","1999","David Fincher",4);
 
+    DVD LOTR = new DVD("2","2","2:40","Lord of The Rings", "Fight Club is a 1999 American film directed by David " +
+            "Fincher and starring Brad Pitt, Edward Norton, and Helena Bonham Carter. It is based on the 1996 novel of the same name by Chuck Palahniuk." +
+            " Norton plays the unnamed narrator, who is discontented with his white-collar job","1999","David Fincher",4);
+
 
     public void init() {
     }
@@ -24,6 +28,7 @@ public class ShowDvd extends HttpServlet{
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>" + Fightclub.getTitle() + "</h1>");
+        out.println("<p>" + LOTR.getTitle() + "</p>");
         out.println("</body></html>");
     }
 
