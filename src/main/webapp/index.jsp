@@ -2,15 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Rest api Project !</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
+<h1><%= "Rest api Project !" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
-<a href="${pageContext.request.contextPath}/show-dvd">Show DVD</a>
-<a href="/Dvd">Show DVD tp like</a>
+<a target="_blank" href="${pageContext.request.contextPath}/api/Dvd">Show all DVDs</a>
 
 </body>
 </html>
