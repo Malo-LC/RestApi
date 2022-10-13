@@ -26,17 +26,18 @@ public class DvdsResource {
     public List<DVD> getDVDBrowser() {
         List<DVD> DVDlist = new ArrayList<DVD>();
         DVDlist.addAll(DvDDao.instance.getModel().values());
+        System.out.println("1");
         return DVDlist;
     }
-/*
+
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<DVD> getDVD() {
-        List<DVD> DVDlist = new ArrayList<DVD>();
-        DVDlist.addAll(DvDDao.instance.getModel().values());
-        System.out.println(DVDlist.isEmpty());
+        List<DVD> DVDlist = new ArrayList<DVD>(DvDDao.instance.getModel().values());
+        System.out.println("2");
+        System.out.println(DVDlist);
         return DVDlist;
-    }*/
+    }
 
     @GET
     @Path("count")
@@ -56,7 +57,7 @@ public class DvdsResource {
                        @FormParam("description") String description,
                        @FormParam("director") String director,
                        @FormParam("release date") String releaseDate,
-                       @FormParam("rating") Integer rating,
+                       @FormParam("rating") String rating,
                        @Context HttpServletResponse servletResponse) throws IOException {
         DVD dvd = new DVD(dvdId, userId, duration, title, description, director, releaseDate, rating);
 

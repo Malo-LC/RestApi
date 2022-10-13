@@ -15,18 +15,13 @@ public class DVD {
     private String description;
     private String director;
     private String releaseDate;
-    private int rating;
+    private String rating;
 
-    public void setRating(int rating) {
-        if(rating >= MINIMUM_RATING && rating <= MAXIMUM_RATING) {
-            this.rating = rating;
-        }
-    }
-
-    public DVD(){
+    public DVD() {
 
     }
-    public DVD(String dvdId, String userId, String duration, String title, String description, String releaseDate, String director, int rating) {
+
+    public DVD(String dvdId, String userId, String duration, String title, String description, String releaseDate, String director, String rating) {
         this.dvdId = dvdId;
         this.userId = userId;
         this.duration = duration;
@@ -34,27 +29,71 @@ public class DVD {
         this.director = director;
         this.description = description;
         this.releaseDate = releaseDate;
-        this.rating = rating >= MINIMUM_RATING && rating <= MAXIMUM_RATING ? rating : DEFAULT_RATING;
+        this.rating = rating;
     }
-    public String getId(){
+
+    public String getId() {
         return dvdId;
     }
-    public String getUserId(){
+
+    public String getUserId() {
         return userId;
     }
 
-    public String getDuration(){
+    public String getDuration() {
         return duration;
     }
+
     public String getTitle() {
         return title;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
+    public String getReleaseDate() {
+        return releaseDate;
+    }
 
+    public String getRating() {
+        return rating;
+    }
 
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDvdId(String dvdId) {
+        this.dvdId = dvdId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
 }
 
