@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Path("/Dvd")
-
 public class DvdsResource {
     @Context
     UriInfo uriInfo;
@@ -25,18 +24,19 @@ public class DvdsResource {
     @GET
     @Produces(MediaType.TEXT_XML)
     public List<DVD> getDVDBrowser() {
-        List<DVD> DVD = new ArrayList<DVD>();
-        DVD.addAll(DvDDao.instance.getModel().values());
-        return DVD;
+        List<DVD> DVDlist = new ArrayList<DVD>();
+        DVDlist.addAll(DvDDao.instance.getModel().values());
+        return DVDlist;
     }
-
+/*
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<DVD> getDVD() {
-        List<DVD> DVD = new ArrayList<DVD>();
-        DVD.addAll(DvDDao.instance.getModel().values());
-        return DVD;
-    }
+        List<DVD> DVDlist = new ArrayList<DVD>();
+        DVDlist.addAll(DvDDao.instance.getModel().values());
+        System.out.println(DVDlist.isEmpty());
+        return DVDlist;
+    }*/
 
     @GET
     @Path("count")

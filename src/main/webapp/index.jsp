@@ -10,5 +10,7 @@
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 <a href="${pageContext.request.contextPath}/show-dvd">Show DVD</a>
+<a href="/Dvd">Show DVD tp like</a>
+
 </body>
 </html>
