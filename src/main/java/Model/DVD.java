@@ -1,5 +1,9 @@
 package Model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+@XmlRootElement
 public class DVD {
     private static final int DEFAULT_RATING = 0;
     private static final int MINIMUM_RATING = 0;
@@ -19,6 +23,9 @@ public class DVD {
         }
     }
 
+    public DVD(){
+
+    }
     public DVD(String dvdId, String userId, String duration, String title, String description, String releaseDate, String director, int rating) {
         this.dvdId = dvdId;
         this.userId = userId;
@@ -29,8 +36,25 @@ public class DVD {
         this.releaseDate = releaseDate;
         this.rating = rating >= MINIMUM_RATING && rating <= MAXIMUM_RATING ? rating : DEFAULT_RATING;
     }
+    public String getId(){
+        return dvdId;
+    }
+    public String getUserId(){
+        return userId;
+    }
 
+    public String getDuration(){
+        return duration;
+    }
     public String getTitle() {
         return title;
     }
+
+    public String getDescription(){
+        return description;
+    }
+
+
+
 }
+
