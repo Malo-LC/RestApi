@@ -3,7 +3,6 @@ package Ressources;
 
 import Model.DVD;
 import REST.DvDDao;
-
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
@@ -22,6 +21,8 @@ public class DvdsResource {
     UriInfo uriInfo;
     @Context
     Request request;
+
+
 
     @GET
     @Produces(MediaType.TEXT_XML)
@@ -49,11 +50,12 @@ public class DvdsResource {
         int count = DvDDao.instance.getModel().size();
         return String.valueOf(count);
     }
+
     @Path("/add")
     @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void newDVD(@FormDataParam("dvdId") String dvdId,
-                       @FormDataParam ("userId") String userId,
+                       @FormDataParam("userId") String userId,
                        @FormDataParam("duration") String duration,
                        @FormDataParam("title") String title,
                        @FormDataParam("description") String description,
@@ -61,13 +63,16 @@ public class DvdsResource {
                        @FormDataParam("releasedate") String releaseDate,
                        @FormDataParam("rating") String rating,
                        @Context HttpServletResponse servletResponse) throws IOException {
+        System.out.println("post premier");
+
         DVD dvd = new DVD(dvdId, userId, duration, title, description, director, releaseDate, rating);
         DvDDao.instance.getModel().put(dvdId, dvd);
         System.out.println("post");
     }
 
-    @Path("{dvd}")
+    @Path("/getDvd/{dvd}")
     public DvdResource getDvd(@PathParam("dvd") String dvdId) {
         return new DvdResource(uriInfo, request, dvdId);
     }
+
 }
