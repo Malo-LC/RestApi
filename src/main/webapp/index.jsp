@@ -8,7 +8,10 @@
 <h1><%= "Rest api Project !" %>
 </h1>
 <br/>
-<a href="${pageContext.request.contextPath}/api/dvd/getAllDvd">Show all DVDs</a>
+<a href="${pageContext.request.contextPath}/api/dvd/getAllDvd">Show all DVDs</a> <br/>
+<a href="${pageContext.request.contextPath}/api/dvd/getDvd/1">Show DVD with ID 1 </a> <br/>
+<a href="${pageContext.request.contextPath}/api/com/dvd/1">Show com DVD with ID 1 </a> <br/>
+
 
 </body>
 </html>

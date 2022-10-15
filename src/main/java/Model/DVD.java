@@ -5,9 +5,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class DVD {
-    private static final int DEFAULT_RATING = 0;
-    private static final int MINIMUM_RATING = 0;
-    private static final int MAXIMUM_RATING = 5;
     private String dvdId;
     private String userId;
     private String duration;

@@ -3,7 +3,7 @@ package Ressources;
 
 import Model.DVD;
 import REST.DvDDao;
-import org.glassfish.jersey.media.multipart.FormDataParam;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -23,13 +23,11 @@ public class DvdsResource {
     Request request;
 
 
-
     @GET
     @Produces(MediaType.TEXT_XML)
     public List<DVD> getDVDBrowser() {
         List<DVD> DVDlist = new ArrayList<DVD>();
         DVDlist.addAll(DvDDao.instance.getModel().values());
-        System.out.println("1");
         return DVDlist;
     }
 
@@ -38,7 +36,6 @@ public class DvdsResource {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<DVD> getDVD() {
         List<DVD> DVDlist = new ArrayList<DVD>(DvDDao.instance.getModel().values());
-        System.out.println("2");
         System.out.println(DVDlist);
         return DVDlist;
     }
@@ -54,23 +51,24 @@ public class DvdsResource {
     @Path("/add")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void newDVD(@FormDataParam("dvdId") String dvdId,
-                       @FormDataParam("userId") String userId,
-                       @FormDataParam("duration") String duration,
-                       @FormDataParam("title") String title,
-                       @FormDataParam("description") String description,
-                       @FormDataParam("director") String director,
-                       @FormDataParam("releasedate") String releaseDate,
-                       @FormDataParam("rating") String rating,
+    @Produces(MediaType.APPLICATION_XML)
+    public void newDVD(@QueryParam("dvdId") String dvdId,
+                       @QueryParam("userId") String userId,
+                       @QueryParam("duration") String duration,
+                       @QueryParam("title") String title,
+                       @QueryParam("description") String description,
+                       @QueryParam("director") String director,
+                       @QueryParam("releasedate") String releaseDate,
+                       @QueryParam("rating") String rating,
                        @Context HttpServletResponse servletResponse) throws IOException {
-        System.out.println("post premier");
-
         DVD dvd = new DVD(dvdId, userId, duration, title, description, director, releaseDate, rating);
         DvDDao.instance.getModel().put(dvdId, dvd);
-        System.out.println("post");
+        servletResponse.sendRedirect("../getDvd/" + dvdId);
     }
 
+
     @Path("/getDvd/{dvd}")
+    @Produces(MediaType.APPLICATION_XML)
     public DvdResource getDvd(@PathParam("dvd") String dvdId) {
         return new DvdResource(uriInfo, request, dvdId);
     }
