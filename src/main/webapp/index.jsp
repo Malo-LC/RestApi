@@ -19,6 +19,8 @@
 <a href="${pageContext.request.contextPath}/api/book/getAllBook">Show all Books</a> <br/>
 <a href="${pageContext.request.contextPath}/api/book/getBook/1">Show Book with ID 1 </a> <br/>
 <a href="${pageContext.request.contextPath}/api/com/book/1">Show com Book with ID 1 </a> <br/>
+<br>
+<a href="${pageContext.request.contextPath}/api/user/getAllUser">See the users</a> <br/>
 
 
 </body>
