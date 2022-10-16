@@ -67,7 +67,7 @@ public class VideoGamesResource {
     }
 
 
-    @Path("/getVideoGame/{videogames}")
+    @Path("/modifyVideoGame/{videogames}")
     @Produces(MediaType.APPLICATION_XML)
     public VideoGameResource getVideoGame(@PathParam("videogames") String videogameId) {
         return new VideoGameResource(uriInfo, request, videogameId);

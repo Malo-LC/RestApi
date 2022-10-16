@@ -13,11 +13,11 @@
 <a href="${pageContext.request.contextPath}/api/com/dvd/1">Show com DVD with ID 1 </a> <br/>
 <br>
 <a href="${pageContext.request.contextPath}/api/videogame/getAllVideoGame">Show all VideoGames</a> <br/>
-<a href="${pageContext.request.contextPath}/api/videogame/getVideoGame/1">Show VideoGame with ID 1 </a> <br/>
+<a href="${pageContext.request.contextPath}/api/videogame/modifyVideoGame/1">Show VideoGame with ID 1 </a> <br/>
 <a href="${pageContext.request.contextPath}/api/com/videogame/1">Show com VideoGame with ID 1 </a> <br/>
 <br>
 <a href="${pageContext.request.contextPath}/api/book/getAllBook">Show all Books</a> <br/>
-<a href="${pageContext.request.contextPath}/api/book/getBook/1">Show Book with ID 1 </a> <br/>
+<a href="${pageContext.request.contextPath}/api/book/modifyBook/1">Show Book with ID 1 </a> <br/>
 <a href="${pageContext.request.contextPath}/api/com/book/1">Show com Book with ID 1 </a> <br/>
 <br>
 <a href="${pageContext.request.contextPath}/api/user/getAllUser">See the users</a> <br/>
