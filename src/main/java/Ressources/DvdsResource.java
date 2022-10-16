@@ -36,7 +36,6 @@ public class DvdsResource {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<DVD> getDVD() {
         List<DVD> DVDlist = new ArrayList<DVD>(DvDDao.instance.getModel().values());
-        System.out.println(DVDlist);
         return DVDlist;
     }
 
@@ -68,7 +67,7 @@ public class DvdsResource {
 
     @Path("/modifyDvd/{dvd}")
     @Produces(MediaType.APPLICATION_XML)
-    public DvdResource getDvd(@PathParam("dvd") String dvdId) {
+    public DvdResource modifyDvd(@PathParam("dvd") String dvdId)  {
         return new DvdResource(uriInfo, request, dvdId);
     }
 

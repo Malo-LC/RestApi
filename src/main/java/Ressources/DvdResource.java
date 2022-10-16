@@ -22,7 +22,7 @@ public class DvdResource {
 
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public DVD getDvd() {
+    public DVD getDVD() {
         DVD dvd = DvDDao.instance.getModel().get(id);
         if (dvd == null)
             throw new RuntimeException("Get: DVD with" + id + "not found");
@@ -55,6 +55,7 @@ public class DvdResource {
 
     private Response putAndGetResponse(DVD dvd) {
         Response res;
+        System.out.println("putNgets");
         if (DvDDao.instance.getModel().containsKey(dvd.getId())) {
             res = Response.noContent().build();
         } else {
