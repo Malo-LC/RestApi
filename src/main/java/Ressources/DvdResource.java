@@ -6,6 +6,7 @@ import REST.DvDDao;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.xml.bind.JAXBElement;
+import java.util.Objects;
 
 public class DvdResource {
     @Context
@@ -13,11 +14,13 @@ public class DvdResource {
     @Context
     Request request;
     String id;
+    String userId;
 
-    public DvdResource(UriInfo uriInfo, Request request, String id) {
+    public DvdResource(UriInfo uriInfo, Request request, String id, String userId) {
         this.uriInfo = uriInfo;
         this.request = request;
         this.id = id;
+        this.userId = userId;
     }
 
     @GET
@@ -47,10 +50,14 @@ public class DvdResource {
 
     @DELETE
     public void deleteDVD() {
-        System.out.println("Test");
-        DVD c = DvDDao.instance.getModel().remove(id);
+        DVD c = DvDDao.instance.getModel().get(id);
         if (c == null)
             throw new RuntimeException("Delete: DVD with" + id + "not found");
+        else if (!Objects.equals(c.getUserId(), userId)) {
+            throw new RuntimeException("Delete: userId does not match, you can't delete");
+        } else {
+            DvDDao.instance.getModel().remove(id);
+        }
     }
 
     private Response putAndGetResponse(DVD dvd) {

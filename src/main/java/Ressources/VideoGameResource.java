@@ -6,6 +6,7 @@ import REST.VideoGameDao;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.xml.bind.JAXBElement;
+import java.util.Objects;
 
 public class VideoGameResource {
     @Context
@@ -13,11 +14,13 @@ public class VideoGameResource {
     @Context
     Request request;
     String id;
+    String userId;
 
-    public VideoGameResource(UriInfo uriInfo, Request request, String id) {
+    public VideoGameResource(UriInfo uriInfo, Request request, String id, String userId) {
         this.uriInfo = uriInfo;
         this.request = request;
         this.id = id;
+        this.userId = userId;
     }
 
     @GET
@@ -50,6 +53,11 @@ public class VideoGameResource {
         VideoGames v = VideoGameDao.instance.getModel().remove(id);
         if (v == null)
             throw new RuntimeException("Delete: VideoGame with" + id + "not found");
+        else if (!Objects.equals(v.getUserId(), userId)) {
+            throw new RuntimeException("Delete: userId does not match, you can't delete");
+        } else {
+            VideoGameDao.instance.getModel().remove(id);
+        }
     }
 
     private Response putAndGetResponse(VideoGames videogames) {

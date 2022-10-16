@@ -6,6 +6,7 @@ import REST.BookDao;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.xml.bind.JAXBElement;
+import java.util.Objects;
 
 public class BookResource {
     @Context
@@ -13,11 +14,13 @@ public class BookResource {
     @Context
     Request request;
     String id;
+    String userId;
 
-    public BookResource(UriInfo uriInfo, Request request, String id) {
+    public BookResource(UriInfo uriInfo, Request request, String id, String userId) {
         this.uriInfo = uriInfo;
         this.request = request;
         this.id = id;
+        this.userId = userId;
     }
 
     @GET
@@ -50,6 +53,11 @@ public class BookResource {
         Book b = BookDao.instance.getModel().remove(id);
         if (b == null)
             throw new RuntimeException("Delete: Book with" + id + "not found");
+        else if (!Objects.equals(b.getUserId(), userId)) {
+            throw new RuntimeException("Delete: userId does not match, you can't delete");
+        } else {
+            BookDao.instance.getModel().remove(id);
+        }
     }
 
     private Response putAndGetResponse(Book book) {

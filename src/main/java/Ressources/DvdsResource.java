@@ -67,8 +67,8 @@ public class DvdsResource {
 
     @Path("/modifyDvd/{dvd}")
     @Produces(MediaType.APPLICATION_XML)
-    public DvdResource modifyDvd(@PathParam("dvd") String dvdId) {
-        return new DvdResource(uriInfo, request, dvdId);
+    public DvdResource modifyDvd(@PathParam("dvd") String dvdId, @QueryParam("userId") String userId) {
+        return new DvdResource(uriInfo, request, dvdId, userId);
     }
 
 }

@@ -70,8 +70,8 @@ public class BooksResource {
 
     @Path("/modifyBook/{book}")
     @Produces(MediaType.APPLICATION_XML)
-    public BookResource getBook(@PathParam("book") String bookId) {
-        return new BookResource(uriInfo, request, bookId);
+    public BookResource getBook(@PathParam("book") String bookId, @QueryParam("userId") String userId) {
+        return new BookResource(uriInfo, request, bookId, userId);
     }
 
 }
