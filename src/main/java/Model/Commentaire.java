@@ -6,10 +6,11 @@ public class Commentaire {
     private String ItemType;
     private String text;
 
-    public Commentaire(){
+    public Commentaire() {
 
     }
-    public Commentaire(String UserID,String ItemType, String ItemID, String text){
+
+    public Commentaire(String UserID, String ItemType, String ItemID, String text) {
         this.ItemType = ItemType;
         this.UserID = UserID;
         this.text = text;

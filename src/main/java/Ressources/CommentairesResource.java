@@ -10,9 +10,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 @Path("/com")
 public class CommentairesResource {
@@ -25,68 +27,65 @@ public class CommentairesResource {
     @POST
     @Path("/dvd/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_XML)
     public void newDVDCom(@PathParam("id") String dvdId,
                           @QueryParam("userId") String userId,
                           @QueryParam("text") String text,
                           @Context HttpServletResponse servletResponse) throws IOException {
         Commentaire com = new Commentaire(userId, "dvd", dvdId, text);
-        ComDao.instance.getModel().put(dvdId, com);
-        servletResponse.sendRedirect("../getDvd/" + dvdId);
+        byte[] array = new byte[7];
+        new Random().nextBytes(array);
+        String generatedString = new String(array, StandardCharsets.UTF_8);
+        ComDao.instance.getModel().put(generatedString, com);
     }
 
     @GET
     @Path("/dvd/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Commentaire getDvdCom(@PathParam("id") String dvdId) {
+    public List<Commentaire> getDvdCom(@PathParam("id") String dvdId) {
         System.out.println("init");
-        Commentaire finalCom = null;
+        List<Commentaire> finalCom = new ArrayList<>();
         List<Commentaire> ComList = new ArrayList<>();
         ComList.addAll(ComDao.instance.getModel().values());
         for (Commentaire com : ComList) {
             if (Objects.equals(com.getItemID(), dvdId) && Objects.equals(com.getItemType(), "dvd")) {
-                finalCom = com;
-                System.out.println("found");
-                break;
+                finalCom.add(com);
             }
         }
-        if (finalCom == null)
-            throw new RuntimeException("Get: DVD com with" + dvdId + "not found");
-        System.out.println(finalCom.getText());
+        if (finalCom.size() == 0)
+            throw new RuntimeException("Get: DVD com with " + dvdId + " not found");
         return finalCom;
     }
 
     @POST
     @Path("/videogame/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_XML)
     public void newVideoGameCom(@PathParam("id") String videogameId,
                                 @QueryParam("userId") String userId,
                                 @QueryParam("text") String text,
                                 @Context HttpServletResponse servletResponse) throws IOException {
         Commentaire com = new Commentaire(userId, "videogame", videogameId, text);
-        ComDao.instance.getModel().put(videogameId, com);
-        servletResponse.sendRedirect("../getVideoGame/" + videogameId);
+        byte[] array = new byte[7];
+        new Random().nextBytes(array);
+        String generatedString = new String(array, StandardCharsets.UTF_8);
+        ComDao.instance.getModel().put(generatedString, com);
     }
 
     @GET
     @Path("/videogame/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Commentaire getVideoGameCom(@PathParam("id") String videogameId) {
+    public List<Commentaire> getVideoGameCom(@PathParam("id") String videogameId) {
         System.out.println("init");
-        Commentaire finalCom = null;
+        List<Commentaire> finalCom = new ArrayList<>();
         List<Commentaire> ComList = new ArrayList<>();
         ComList.addAll(ComDao.instance.getModel().values());
         for (Commentaire com : ComList) {
             if (Objects.equals(com.getItemID(), videogameId) && Objects.equals(com.getItemType(), "videogame")) {
-                finalCom = com;
+                finalCom.add(com);
                 System.out.println("found");
-                break;
             }
         }
-        if (finalCom == null)
+        if (finalCom.size() == 0)
             throw new RuntimeException("Get: VideoGame com with" + videogameId + "not found");
-        System.out.println(finalCom.getText());
         return finalCom;
     }
 
@@ -94,36 +93,33 @@ public class CommentairesResource {
     @POST
     @Path("/book/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_XML)
     public void newBookCom(@PathParam("id") String bookId,
-                                @QueryParam("userId") String userId,
-                                @QueryParam("text") String text,
-                                @Context HttpServletResponse servletResponse) throws IOException {
+                           @QueryParam("userId") String userId,
+                           @QueryParam("text") String text,
+                           @Context HttpServletResponse servletResponse) throws IOException {
         Commentaire com = new Commentaire(userId, "book", bookId, text);
-        ComDao.instance.getModel().put(bookId, com);
-        servletResponse.sendRedirect("../getBook/" + bookId);
+        byte[] array = new byte[7];
+        new Random().nextBytes(array);
+        String generatedString = new String(array, StandardCharsets.UTF_8);
+        ComDao.instance.getModel().put(generatedString, com);
     }
 
     @GET
     @Path("/book/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Commentaire getBookCom(@PathParam("id") String bookId) {
+    public List<Commentaire> getBookCom(@PathParam("id") String bookId) {
         System.out.println("init");
-        Commentaire finalCom = null;
+        List<Commentaire> finalCom = new ArrayList<>();
         List<Commentaire> ComList = new ArrayList<>();
         ComList.addAll(ComDao.instance.getModel().values());
         for (Commentaire com : ComList) {
             if (Objects.equals(com.getItemID(), bookId) && Objects.equals(com.getItemType(), "book")) {
-                finalCom = com;
+                finalCom.add(com);
                 System.out.println("found");
-                break;
             }
         }
-        if (finalCom == null)
+        if (finalCom.size() == 0)
             throw new RuntimeException("Get: Book com with" + bookId + "not found");
-        System.out.println(finalCom.getText());
         return finalCom;
     }
-
-
 }
