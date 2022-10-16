@@ -55,7 +55,6 @@ public class UserResource {
 
     private Response putAndGetResponse(User user) {
         Response res;
-        System.out.println("putNgets");
         if (UserDao.instance.getModel().containsKey(user.getId())) {
             res = Response.noContent().build();
         } else {

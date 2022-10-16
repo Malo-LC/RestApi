@@ -8,9 +8,9 @@ import java.util.Map;
 public enum ComDao {
     instance;
 
-    private Map<String, Commentaire> contentProvider = new HashMap<>();
+    private final Map<String, Commentaire> contentProvider = new HashMap<>();
 
-    private ComDao() {
+    ComDao() {
         Commentaire com1 = new Commentaire("1", "dvd", "1", "Très bon film !!");
         contentProvider.put("1", com1);
 

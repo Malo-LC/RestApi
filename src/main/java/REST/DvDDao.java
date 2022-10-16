@@ -8,9 +8,9 @@ import java.util.Map;
 public enum DvDDao {
     instance;
 
-    private Map<String, DVD> contentProvider = new HashMap<>();
+    private final Map<String, DVD> contentProvider = new HashMap<>();
 
-    private DvDDao() {
+    DvDDao() {
         DVD dvd1 = new DVD("1", "1", "1", "Lord of the Rings", "Jeter anneau dans feu", "2001", "Peter Jackson", "5");
         contentProvider.put("1", dvd1);
         DVD Fightclub = new DVD("3", "1", "2:40", "Fight Club", "Fight Club is a 1999 American film directed by David " +

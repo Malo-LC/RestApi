@@ -53,11 +53,11 @@ public class UsersResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_XML)
     public void newUser(@QueryParam("userId") String userId,
-                       @QueryParam("name") String name,
-                       @QueryParam("firstname") String fistname,
+                        @QueryParam("name") String name,
+                        @QueryParam("firstname") String fistname,
                         @QueryParam("city") String city,
-                       @Context HttpServletResponse servletResponse) throws IOException {
-        User user = new User(userId, name, fistname,city);
+                        @Context HttpServletResponse servletResponse) throws IOException {
+        User user = new User(userId, name, fistname, city);
         UserDao.instance.getModel().put(userId, user);
         servletResponse.sendRedirect("../getUser/" + userId);
     }

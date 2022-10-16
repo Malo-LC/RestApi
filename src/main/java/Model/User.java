@@ -23,10 +23,11 @@ public class User {
         this.userId = userId;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -34,12 +35,16 @@ public class User {
         return firstname;
     }
 
-    public void setFirstname(){
+    public void setFirstname() {
         this.firstname = firstname;
     }
 
-    public String getCity(){return city;}
+    public String getCity() {
+        return city;
+    }
 
-    public void setCity(){this.city=city;}
+    public void setCity() {
+        this.city = city;
+    }
 
 }

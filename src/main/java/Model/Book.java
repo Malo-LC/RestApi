@@ -63,7 +63,9 @@ public class Book {
         return editor;
     }
 
-    public String getRating(){return rating;}
+    public String getRating() {
+        return rating;
+    }
 
     public void setBookId(String bookId) {
         this.bookId = bookId;

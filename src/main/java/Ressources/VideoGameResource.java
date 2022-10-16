@@ -1,8 +1,6 @@
 package Ressources;
 
-import Model.DVD;
 import Model.VideoGames;
-import REST.DvDDao;
 import REST.VideoGameDao;
 
 import javax.ws.rs.*;

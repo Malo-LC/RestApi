@@ -62,7 +62,7 @@ public class BooksResource {
                        @QueryParam("editor") String editor,
                        @QueryParam("rating") String rating,
                        @Context HttpServletResponse servletResponse) throws IOException {
-        Book book = new Book(bookId, userId, author, title, type,description, releaseDate, editor, rating);
+        Book book = new Book(bookId, userId, author, title, type, description, releaseDate, editor, rating);
         BookDao.instance.getModel().put(bookId, book);
         servletResponse.sendRedirect("../getBook/" + bookId);
     }

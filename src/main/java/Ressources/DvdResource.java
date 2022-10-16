@@ -55,7 +55,6 @@ public class DvdResource {
 
     private Response putAndGetResponse(DVD dvd) {
         Response res;
-        System.out.println("putNgets");
         if (DvDDao.instance.getModel().containsKey(dvd.getId())) {
             res = Response.noContent().build();
         } else {
