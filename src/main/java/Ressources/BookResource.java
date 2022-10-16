@@ -43,8 +43,8 @@ public class BookResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
-    public Response putBook(JAXBElement<Book> dvd) {
-        Book b = dvd.getValue();
+    public Response putBook(JAXBElement<Book> book) {
+        Book b = book.getValue();
         return putAndGetResponse(b);
     }
 

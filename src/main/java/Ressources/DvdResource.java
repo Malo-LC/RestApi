@@ -5,7 +5,6 @@ import REST.DvDDao;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import javax.xml.bind.JAXBElement;
 import java.util.Objects;
 
 public class DvdResource {
@@ -42,10 +41,17 @@ public class DvdResource {
     }
 
     @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public Response putDVD(JAXBElement<DVD> dvd) {
-        DVD c = dvd.getValue();
-        return putAndGetResponse(c);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response putDVD(@QueryParam("dvdId") String dvdId,
+                           @QueryParam("userId") String userId,
+                           @QueryParam("duration") String duration,
+                           @QueryParam("title") String title,
+                           @QueryParam("description") String description,
+                           @QueryParam("director") String director,
+                           @QueryParam("releasedate") String releaseDate,
+                           @QueryParam("rating") String rating) {
+        DVD dvd = new DVD(dvdId, userId, duration, title, description, director, releaseDate, rating);
+        return putAndGetResponse(dvd);
     }
 
     @DELETE

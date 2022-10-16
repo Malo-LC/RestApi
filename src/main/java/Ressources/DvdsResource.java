@@ -26,17 +26,14 @@ public class DvdsResource {
     @GET
     @Produces(MediaType.TEXT_XML)
     public List<DVD> getDVDBrowser() {
-        List<DVD> DVDlist = new ArrayList<DVD>();
-        DVDlist.addAll(DvDDao.instance.getModel().values());
-        return DVDlist;
+        return new ArrayList<>(DvDDao.instance.getModel().values());
     }
 
     @GET
     @Path("/getAllDvd")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<DVD> getDVD() {
-        List<DVD> DVDlist = new ArrayList<DVD>(DvDDao.instance.getModel().values());
-        return DVDlist;
+        return new ArrayList<>(DvDDao.instance.getModel().values());
     }
 
     @GET
@@ -62,6 +59,7 @@ public class DvdsResource {
         DVD dvd = new DVD(dvdId, userId, duration, title, description, director, releaseDate, rating);
         DvDDao.instance.getModel().put(dvdId, dvd);
         System.out.println("Ajouté");
+        servletResponse.sendRedirect("../modifyDvd/" + dvdId);
     }
 
 
