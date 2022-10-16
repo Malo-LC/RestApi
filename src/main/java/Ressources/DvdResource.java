@@ -47,6 +47,7 @@ public class DvdResource {
 
     @DELETE
     public void deleteDVD() {
+        System.out.println("Test");
         DVD c = DvDDao.instance.getModel().remove(id);
         if (c == null)
             throw new RuntimeException("Delete: DVD with" + id + "not found");

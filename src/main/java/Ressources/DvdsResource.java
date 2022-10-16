@@ -51,7 +51,6 @@ public class DvdsResource {
     @Path("/add")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_XML)
     public void newDVD(@QueryParam("dvdId") String dvdId,
                        @QueryParam("userId") String userId,
                        @QueryParam("duration") String duration,
@@ -63,11 +62,11 @@ public class DvdsResource {
                        @Context HttpServletResponse servletResponse) throws IOException {
         DVD dvd = new DVD(dvdId, userId, duration, title, description, director, releaseDate, rating);
         DvDDao.instance.getModel().put(dvdId, dvd);
-        servletResponse.sendRedirect("../getDvd/" + dvdId);
+        System.out.println("Ajouté");
     }
 
 
-    @Path("/getDvd/{dvd}")
+    @Path("/modifyDvd/{dvd}")
     @Produces(MediaType.APPLICATION_XML)
     public DvdResource getDvd(@PathParam("dvd") String dvdId) {
         return new DvdResource(uriInfo, request, dvdId);
