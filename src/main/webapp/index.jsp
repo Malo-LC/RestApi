@@ -4,28 +4,49 @@
 <head>
     <title>Rest api Project !</title>
     <style type="text/css">
-        body{background-color: bisque}
-        h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+        body {
+            background-color: bisque
+        }
+
+        h1 {
+            color: #111;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 100px;
+            font-weight: bold;
+            letter-spacing: -1px;
+            line-height: 1;
+            text-align: center;
+        }
+
+        div {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            width: 300px;
+            margin-bottom: 10px;
+            background-color: #F6EDDAFF;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding-left: 10px;
+        }
+
+        .flex {
+            display: flex;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
     </style>
 </head>
-<style>
-    div{
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        width: 300px;
-        margin-bottom: 10px;
-
-    }
-    a{
-        text-decoration: none;
-        color:black;
-        margin:10px;
-
-    }
-</style>
 <body>
 <h1><%= "Rest api Project !" %>
 </h1>
 <br/>
+<span class="flex">
 <div>
 <a href="${pageContext.request.contextPath}/api/dvd/getAllDvd">Show all DVDs</a> <br/>
 <a href="${pageContext.request.contextPath}/api/dvd/modifyDvd/1">Show DVD with ID 1 </a> <br/>
@@ -47,6 +68,7 @@
 <div>
 <a href="${pageContext.request.contextPath}/api/user/getAllUser">See the users</a> <br/>
 </div>
+</span>
 
 </body>
 </html>
