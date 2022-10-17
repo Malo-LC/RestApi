@@ -3,6 +3,7 @@ package Ressources;
 import Model.VideoGames;
 import REST.VideoGameDao;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.xml.bind.JAXBElement;
@@ -43,8 +44,16 @@ public class VideoGameResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
-    public Response putVideoGames(JAXBElement<VideoGames> videogames) {
-        VideoGames v = videogames.getValue();
+    public Response putVideoGames(@QueryParam("videogameId") String videogameId,
+                                  @QueryParam("userId") String userId,
+                                  @QueryParam("Name") String name,
+                                  @QueryParam("type") String type,
+                                  @QueryParam("resume") String resume,
+                                  @QueryParam("editor") String editor,
+                                  @QueryParam("releasedate") String releaseDate,
+                                  @QueryParam("rating") String rating,
+                                  @Context HttpServletResponse servletResponse) {
+        VideoGames v = new VideoGames(videogameId,userId,name,type,resume,editor,releaseDate,rating);
         return putAndGetResponse(v);
     }
 

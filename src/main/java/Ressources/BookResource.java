@@ -43,8 +43,16 @@ public class BookResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
-    public Response putBook(JAXBElement<Book> book) {
-        Book b = book.getValue();
+    public Response putBook(@QueryParam("bookId") String bookId,
+                            @QueryParam("userId") String userId,
+                            @QueryParam("author") String author,
+                            @QueryParam("title") String title,
+                            @QueryParam("type") String type,
+                            @QueryParam("description") String description,
+                            @QueryParam("releasedate") String releaseDate,
+                            @QueryParam("editor") String editor,
+                            @QueryParam("rating") String rating) {
+        Book b = new Book(bookId,userId,author,title,type,description,releaseDate,editor,rating);
         return putAndGetResponse(b);
     }
 

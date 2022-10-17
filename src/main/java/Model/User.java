@@ -4,7 +4,6 @@ public class User {
     private String userId;
     private String name;
     private String firstname;
-
     private String city;
 
 

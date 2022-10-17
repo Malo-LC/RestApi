@@ -26,9 +26,7 @@ public class BooksResource {
     @GET
     @Produces(MediaType.TEXT_XML)
     public List<Book> getBookBrowser() {
-        List<Book> Booklist = new ArrayList<Book>();
-        Booklist.addAll(BookDao.instance.getModel().values());
-        return Booklist;
+        return new ArrayList<Book>(BookDao.instance.getModel().values());
     }
 
     @GET
