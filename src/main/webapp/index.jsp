@@ -3,6 +3,10 @@
 <html>
 <head>
     <title>Rest api Project !</title>
+    <style type="text/css">
+        body{background-color: bisque}
+        h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+    </style>
 </head>
 <style>
     div{

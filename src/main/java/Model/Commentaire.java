@@ -30,7 +30,7 @@ public class Commentaire {
     }
 
     public void setItemType(String ItemType) {
-        ItemType = ItemType;
+        this.ItemType = ItemType;
     }
 
     public void setText(String text) {
